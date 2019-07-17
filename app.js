@@ -6,6 +6,8 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const userRoutes = require('./routes/user')
+const todoRoutes = require('./routes/todo')
+const homeRoutes = require('./routes/home')
 const passport = require('passport')
 const session = require('express-session')
 
@@ -40,11 +42,11 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
+app.use('/', homeRoutes)
 
 app.use('/users', userRoutes)
+
+app.use('/todos', todoRoutes)
 
 // 設定 express port 3000
 app.listen(port, () => {
