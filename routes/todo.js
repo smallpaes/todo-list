@@ -68,10 +68,11 @@ router.put('/edit/:id', isAuthenticated, (req, res) => {
   })
     .then(todo => {
       todo.name = req.body.name
-      todo.done = req.body.done === 'on'
+      todo.done = req.body.status === 'done'
       return todo.save()
     })
-    .then(todo => res.redirect(`/todos/${req.params.id}`))
+    // .then(todo => res.redirect(`/todos/edit/${req.params.id}`))
+    .then(todo => res.redirect(`/`))
     .catch(error => res.status(422).json(error))
 })
 
