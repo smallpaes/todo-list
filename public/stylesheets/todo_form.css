@@ -1,8 +1,8 @@
 form{
-  height:195px;
+  min-height:195px;
   background: rgba(176,176,176, .6);
   border-radius: 5px;
-  padding: 0 5px;
+  padding: 0 5px 10px 5px;
   margin-bottom: 10px;
 }
 

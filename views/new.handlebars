@@ -8,7 +8,9 @@
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo">
       </div>
       <div class="form-group">
-        <textarea name="detail" id="detail" cols="30" rows="10"></textarea>
+        <label for="detail" class="sr-only">Detail</label>
+        <textarea class="form-control" name="detail" id="detail" rows="3"
+          placeholder="Give the task some description here...">{{todo.detail}}</textarea>
       </div>
       <div class="btn-group btn-group-toggle mb-3 d-flex pt-1" data-toggle="buttons">
         <label class="btn btn-sm btn-secondary">

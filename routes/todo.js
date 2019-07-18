@@ -34,12 +34,17 @@ router.get('/new', isAuthenticated, (req, res) => {
 
 // create todo submit
 router.post('/new', isAuthenticated, (req, res) => {
+  console.log(req.body.detail)
   Todo.create({
     name: req.body.name,
     done: req.body.status === 'done',
+    detail: req.body.detail,
     UserId: req.user.id
   })
-    .then(todo => res.redirect('/'))
+    .then(todo => {
+      console.log(todo)
+      return res.redirect('/')
+    })
     .catch(error => res.status(422).json(err))
 })
 
@@ -69,6 +74,7 @@ router.put('/edit/:id', isAuthenticated, (req, res) => {
     .then(todo => {
       todo.name = req.body.name
       todo.done = req.body.status === 'done'
+      todo.detail = req.body.detail
       return todo.save()
     })
     // .then(todo => res.redirect(`/todos/edit/${req.params.id}`))
