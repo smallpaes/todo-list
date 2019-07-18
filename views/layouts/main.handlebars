@@ -6,10 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Todo List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/css/all.css">
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <link rel="stylesheet" href="/stylesheets/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Reem+Kufi&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  {{{body}}}
+  <div class="overlay"></div>
+
+  <!--Navbar-->
+  <nav class="navbar position-relative">
+    <a href="/" class="navbar-brand text-dark font-weight-bolder border-bottom border-dark">My Todo List</a>
+
+    <ul class="navbar-nav d-flex flex-row">
+      <li class="nav-item">
+        <a href="/todos/new" class="new-task-btn"><i class="fas fa-plus py-1"></i><span
+            class="ml-1 d-none d-md-inline">New
+            Task</span></a>
+      </li>
+      <li class="nav-item ml-3">
+        <a href="/users/logout" class="log-out-btn">Log out</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!--Display Section-->
+  <section id="display-container" class="position-relative rounded shadow">
+    <div class="rounded" id="display-panel">
+      {{{body}}}
+    </div>
+  </section>
+
+  <script src="/javascripts/popper.min.js"></script>
+  <script src="/javascripts/jquery-3.4.1.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
 </body>
 
 </html>

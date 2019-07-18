@@ -8,7 +8,14 @@ const Todo = db.Todo
 const { isAuthenticated } = require('../config/auth')
 
 router.get('/', isAuthenticated, (req, res) => {
-  res.send('list all todos')
+  User.findByPk(req.user.id)
+    .then(user => {
+      if (!user) throw new Error('user not found')
+      return Todo.findAll({ where: { UserId: req.user.id } })
+    })
+    .then(todos => res.render('index', { todos }))
+    .catch(error => res.status(422).json(error))
+
 })
 
 module.exports = router

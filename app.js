@@ -42,6 +42,8 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(express.static('public'))
+
 app.use('/', homeRoutes)
 
 app.use('/users', userRoutes)

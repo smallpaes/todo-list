@@ -1,0 +1,127 @@
+.todo-list {
+  margin-top: 15px;
+  height:400px;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.todo-list .row {
+  min-height: 50px;
+  border-radius: 5px;
+  list-style-type: none;
+  margin: 5px 0;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 1.5rem;
+  background: rgba(176,176,176, .6);
+  padding: 0 5px;
+}
+
+.todo-list .input-container {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*Hide default checkbox*/
+.todo-list .input-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/*custom checkbox*/
+.todo-list .input-container .checkmark {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 1.1rem;
+  width: 1.1rem;
+  background: transparent;
+  transform: translateY(-50%);
+  border: 1px solid white;
+}
+
+/*background styling*/
+.todo-list .input-container input:checked ~ .checkmark{
+  background-color: #3B945E;
+  border: none;
+  transition: all .2s linear;
+}
+
+/*checkmark styling*/
+.input-container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.input-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.todo-list a,
+.todo-list .delete-btn {
+  color: #383838;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: none;
+}
+
+.todo-list a:hover,
+.todo-list .delete-btn:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.todo-list .delete-modal {
+  font-family: 'Lobster', cursive;
+  color: #505050;
+}
+
+.todo-list .delete-modal .modal-body {
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.todo-list .delete-model-btns button {
+  background: #FFFFFF;
+  padding: 2px 12px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #505050;
+  font-size: 1.2rem;
+}
+
+.todo-list .delete-model-btns button:hover {
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
+  box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
+}
+
+.todo-list .delete-model-btns #delete-model-back:hover {
+  color: #14A76C;
+  border-color: #14A76C;
+  transition: all .3s linear;
+}
+
+.todo-list .delete-model-btns #delete-model-delete:hover {
+  color: #C3073F;
+  border-color: #C3073F;
+  transition: all .3s linear;
+}

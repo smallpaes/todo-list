@@ -1,0 +1,48 @@
+body {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=2992&q=80');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Lobster', cursive;
+}
+
+div.overlay {
+  position: absolute;
+  top: 0;
+  bottom:0;
+  left: 0;
+  right: 0;
+  background:rgba(255,255,255,.2)
+}
+
+/*Navbar*/
+nav .new-task-btn {
+  color: #505050;
+  padding: 8px 12px;
+  border-radius: 30px;
+}
+
+nav .log-out-btn {
+  background: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #505050;
+}
+
+/*Display Section*/
+section#display-container {
+  width: 70%;
+  max-width: 350px;
+  margin: 100px auto;
+}
+
+#display-panel {
+  background: rgba(64,64,64,.4);
+  padding: 0 10px;
+}
+
+#display-panel h3 {
+  color: white;
+}
