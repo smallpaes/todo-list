@@ -1,0 +1,16 @@
+form {
+  height:200px;
+}
+
+.todo-submit {
+  background: #265077;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+.todo-submit:hover {
+  background: #1E4258;
+  color: white;
+}

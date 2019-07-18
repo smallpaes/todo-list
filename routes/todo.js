@@ -12,7 +12,7 @@ router.get('/', isAuthenticated, (req, res) => {
 })
 
 // show one todo
-router.get('/:id', isAuthenticated, (req, res) => {
+router.get('/view/:id', isAuthenticated, (req, res) => {
   User.findByPk(req.user.id)
     .then(user => {
       if (!user) throw new Error('user not found')
@@ -33,10 +33,10 @@ router.get('/new', isAuthenticated, (req, res) => {
 })
 
 // create todo submit
-router.post('/', isAuthenticated, (req, res) => {
+router.post('/new', isAuthenticated, (req, res) => {
   Todo.create({
     name: req.body.name,
-    done: false,
+    done: req.body.status === 'done',
     UserId: req.user.id
   })
     .then(todo => res.redirect('/'))
@@ -44,7 +44,7 @@ router.post('/', isAuthenticated, (req, res) => {
 })
 
 // update todo page
-router.get('/:id/edit', isAuthenticated, (req, res) => {
+router.get('/edit/:id', isAuthenticated, (req, res) => {
   User.findByPk(req.user.id)
     .then(user => {
       if (!user) throw new Error('user not found')
@@ -59,7 +59,7 @@ router.get('/:id/edit', isAuthenticated, (req, res) => {
 })
 
 // update todo submit
-router.put('/:id', isAuthenticated, (req, res) => {
+router.put('/edit/:id', isAuthenticated, (req, res) => {
   Todo.findOne({
     where: {
       Id: req.params.id,
@@ -76,7 +76,7 @@ router.put('/:id', isAuthenticated, (req, res) => {
 })
 
 // delete todo 
-router.delete('/:id/delete', isAuthenticated, (req, res) => {
+router.delete('/delete/:id', isAuthenticated, (req, res) => {
   User.findByPk(req.user.id)
     .then(user => {
       if (!user) throw new Error('user not found')

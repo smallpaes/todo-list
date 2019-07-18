@@ -1,2 +1,22 @@
 <!--New todo-->
-<h3 class="text-center pt-3"><u>New Todo</u></h3>
+<section id="display-container" class="position-relative rounded shadow">
+  <div class="rounded" id="display-panel">
+    <h3 class="text-center pt-3"><u>New Todo</u></h3>
+    <form action="/todos/new" method="post" class="pt-3">
+      <div class="form-group">
+        <label for="name" class="sr-only">New todo</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo">
+      </div>
+      <div class="btn-group btn-group-toggle mb-3 d-flex pt-1" data-toggle="buttons">
+        <label class="btn btn-sm btn-secondary">
+          <input type="radio" name="status" id="done" value="done" autocomplete="off">Done
+        </label>
+        <label class="btn btn-sm btn-secondary active">
+          <input type="radio" name="status" id="notDone" value="notDone" autocomplete="off" checked>Undone
+        </label>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-block todo-submit">Submit</button>
+    </form>
+  </div>
+</section>

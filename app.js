@@ -44,11 +44,11 @@ app.use((req, res, next) => {
 
 app.use(express.static('public'))
 
-app.use('/', homeRoutes)
+app.use('/todos', todoRoutes)
 
 app.use('/users', userRoutes)
 
-app.use('/todos', todoRoutes)
+app.use('/', homeRoutes)
 
 // 設定 express port 3000
 app.listen(port, () => {
