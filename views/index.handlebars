@@ -7,7 +7,7 @@
       <div class="row">
         <a href="" class="col-9 d-flex align-items-center">
           <label class="input-container m-0">
-            <input type="checkbox" name="finished" id="finished">
+            <input type="checkbox" name="done" id="done" {{#if this.done}}checked{{/if}} disabled>
             <span class="checkmark"></span>
             <h4 class="m-0 ml-4 p-0">{{this.name}}</h4>
           </label>
