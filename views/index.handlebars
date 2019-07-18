@@ -5,7 +5,7 @@
     <div class="todo-list">
       {{#each todos}}
       <div class="row">
-        <a href="" class="col-9 d-flex align-items-center">
+        <a href="/todos/view/{{this.id}}" class="col-9 d-flex align-items-center">
           <label class="input-container m-0">
             <input type="checkbox" name="done" id="done" {{#if this.done}}checked{{/if}} disabled>
             <span class="checkmark"></span>
@@ -17,7 +17,7 @@
           <button type="button" class="delete-btn" data-toggle="modal" data-target="#d{{this.id}}">
             <i class="fas fa-trash"></i>
           </button>
-          <div class="modal fade delete-modal" id="d{{user.id}}" tabindex="-1" role="dialog"
+          <div class="modal fade delete-modal" id="d{{this.id}}" tabindex="-1" role="dialog"
             aria-labelledby="Model for delete warning" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">

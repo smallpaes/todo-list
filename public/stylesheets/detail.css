@@ -1,0 +1,69 @@
+div.detail-panel-title  {
+  min-height:40px;
+  background: rgba(176,176,176, .6);
+}
+
+div.detail-panel-detail  {
+  min-height:100px;
+  background: rgba(176,176,176, .6);
+}
+
+div.detail-panel-detail:hover .edit-btn,
+div.detail-panel-detail:hover .delete-btn {
+  visibility: visible;
+  opacity: 1;
+  transition: all .2s linear;
+}
+
+.edit-btn,
+.delete-btn {
+  color: rgb(73, 72, 72);
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: none;
+  visibility: hidden;
+  opacity: 0;
+  text-shadow: 1px 1px 1px #4C4C4C;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.delete-modal {
+  font-family: 'Lobster', cursive;
+  color: #505050;
+}
+
+.delete-modal .modal-body {
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.delete-model-btns button {
+  background: #FFFFFF;
+  padding: 2px 12px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #505050;
+  font-size: 1.2rem;
+}
+
+.delete-model-btns button:hover {
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
+  box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
+}
+
+.delete-model-btns #delete-model-back:hover {
+  color: #14A76C;
+  border-color: #14A76C;
+  transition: all .3s linear;
+}
+
+.delete-model-btns #delete-model-delete:hover {
+  color: #C3073F;
+  border-color: #C3073F;
+  transition: all .3s linear;
+}

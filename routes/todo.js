@@ -23,7 +23,7 @@ router.get('/view/:id', isAuthenticated, (req, res) => {
         }
       })
     })
-    .then(todo => res.render('detail', { todo }))
+    .then(todo => res.render('detail', { todo, detailCSS: true }))
     .catch(error => res.status(422).json(error))
 })
 

@@ -1,25 +1,37 @@
 <!--Detail Page-->
 <section id="display-container" class="position-relative rounded shadow">
   <div class="rounded" id="display-panel">
-    <h3 class="text-center pt-3 pb-3"><u>Edit Todo</u></h3>
-    <form action="/todos/edit/{{todo.id}}?_method=PUT" method="post" class="pt-3">
-      <div class="form-group">
-        <label for="name" class="sr-only">New todo</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo"
-          value="{{todo.name}}">
+    <h3 class="text-center pt-3 pb-3"><u>Todo</u></h3>
+    <div class="detail-panel-title mb-2 d-flex align-items-center px-3">
+      <h5 class="m-0 pr-3"><i class="far fa-calendar-check"></i></h5>
+      <h4 class="m-0">{{todo.name}}</h4>
+    </div>
+    <div class="detail-panel-detail mb-2 px-3 d-flex flex-column justify-content-between">
+      <p class="p-0 m-0 pt-2">{{#if todo.detail}}{{todo.detail}}{{else}}No Detail...{{/if}}</p>
+      <div class="detail-buttons d-flex justify-content-end pb-1">
+        <a href="/todos/edit/{{todo.id}}" class="mr-1 edit-btn"><i class="fas fa-edit"></i></a>
+        <button type="button" class="delete-btn" data-toggle="modal" data-target="#d{{todo.id}}">
+          <i class="fas fa-trash"></i>
+        </button>
       </div>
-      <div class="btn-group btn-group-toggle mb-3 d-flex pt-1" data-toggle="buttons">
-        <label class="btn btn-sm btn-secondary {{#if todo.done}}active{{/if}}">
-          <input type="radio" name="status" id="done" value="done" autocomplete="off"
-            {{#if todo.done}}checked{{/if}}>Done
-        </label>
-        <label class="btn btn-sm btn-secondary {{#if todo.done}}{{else}}active{{/if}}">
-          <input type="radio" name="status" id="notDone" value="notDone" autocomplete="off"
-            {{#if todo.done}}{{else}}checked{{/if}}>Undone
-        </label>
+      <div class="modal fade delete-modal" id="d{{todo.id}}" tabindex="-1" role="dialog"
+        aria-labelledby="Model for delete warning" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-0 pb-1">
+              <h5 class="modal-title" id="exampleModalCenterTitle"><i
+                  class="fas fa-exclamation-triangle mr-2 text-danger"></i>Delete Confirmation</h5>
+            </div>
+            <div class="modal-body">
+              <h5 class="p-0 m-0">Your sure want to delete "{{todo.name}}"?</h5>
+            </div>
+            <div class="modal-footer delete-model-btns border-0 pt-1">
+              <button type="button" id="delete-model-back" data-dismiss="modal">Go back</button>
+              <button type="button" id="delete-model-delete">Delete</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <hr>
-      <button type="submit" class="btn btn-block todo-submit">Submit</button>
-    </form>
+    </div>
   </div>
 </section>
