@@ -1,0 +1,12 @@
+.card {
+  background-color: rgba(255,255,255,.9);
+}
+
+.user-form-btn {
+  background: #F79102;
+  padding: 8px 12px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #FFFFFF;
+  border-color: transparent;
+}

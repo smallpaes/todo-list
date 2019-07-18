@@ -1,39 +1,43 @@
 <!--Todo list-->
-<h3 class="text-center pt-3"><u>Todo List</u></h3>
-<div class="todo-list">
-  {{#each todos}}
-  <div class="row">
-    <a href="" class="col-9 d-flex align-items-center">
-      <label class="input-container m-0">
-        <input type="checkbox" name="finished" id="finished">
-        <span class="checkmark"></span>
-        <h4 class="m-0 ml-4 p-0">{{this.name}}</h4>
-      </label>
-    </a>
-    <div class="col-3 d-flex align-items-center">
-      <a href="/todos/{{this.id}}" class="mr-2"><i class="fas fa-edit"></i></a>
-      <button type="button" class="delete-btn" data-toggle="modal" data-target="#d{{this.id}}">
-        <i class="fas fa-trash"></i>
-      </button>
-      <div class="modal fade delete-modal" id="d{{user.id}}" tabindex="-1" role="dialog"
-        aria-labelledby="Model for delete warning" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header border-0 pb-1">
-              <h5 class="modal-title" id="exampleModalCenterTitle"><i
-                  class="fas fa-exclamation-triangle mr-2 text-danger"></i>Delete Confirmation</h5>
-            </div>
-            <div class="modal-body">
-              <small>Your sure want to delete "{{this.name}}"?</small>
-            </div>
-            <div class="modal-footer delete-model-btns border-0 pt-1">
-              <button type="button" id="delete-model-back" data-dismiss="modal">Go back</button>
-              <button type="button" id="delete-model-delete">Delete</button>
+<section id="display-container" class="position-relative rounded shadow">
+  <div class="rounded" id="display-panel">
+    <h3 class="text-center pt-3"><u>Todo List</u></h3>
+    <div class="todo-list">
+      {{#each todos}}
+      <div class="row">
+        <a href="" class="col-9 d-flex align-items-center">
+          <label class="input-container m-0">
+            <input type="checkbox" name="finished" id="finished">
+            <span class="checkmark"></span>
+            <h4 class="m-0 ml-4 p-0">{{this.name}}</h4>
+          </label>
+        </a>
+        <div class="col-3 d-flex align-items-center">
+          <a href="/todos/{{this.id}}" class="mr-2"><i class="fas fa-edit"></i></a>
+          <button type="button" class="delete-btn" data-toggle="modal" data-target="#d{{this.id}}">
+            <i class="fas fa-trash"></i>
+          </button>
+          <div class="modal fade delete-modal" id="d{{user.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="Model for delete warning" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-0 pb-1">
+                  <h5 class="modal-title" id="exampleModalCenterTitle"><i
+                      class="fas fa-exclamation-triangle mr-2 text-danger"></i>Delete Confirmation</h5>
+                </div>
+                <div class="modal-body">
+                  <small>Your sure want to delete "{{this.name}}"?</small>
+                </div>
+                <div class="modal-footer delete-model-btns border-0 pt-1">
+                  <button type="button" id="delete-model-back" data-dismiss="modal">Go back</button>
+                  <button type="button" id="delete-model-delete">Delete</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      {{/each}}
     </div>
   </div>
-  {{/each}}
-</div>
+</section>
