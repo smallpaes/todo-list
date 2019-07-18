@@ -29,7 +29,7 @@ router.get('/view/:id', isAuthenticated, (req, res) => {
 
 // create todo page
 router.get('/new', isAuthenticated, (req, res) => {
-  res.render('new')
+  res.render('new', { todoFormCSS: true })
 })
 
 // create todo submit
@@ -55,7 +55,7 @@ router.get('/edit/:id', isAuthenticated, (req, res) => {
         }
       })
     })
-    .then(todo => res.render('edit', { todo }))
+    .then(todo => res.render('edit', { todo, todoFormCSS: true }))
 })
 
 // update todo submit

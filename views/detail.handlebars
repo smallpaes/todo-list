@@ -1,0 +1,25 @@
+<!--Detail Page-->
+<section id="display-container" class="position-relative rounded shadow">
+  <div class="rounded" id="display-panel">
+    <h3 class="text-center pt-3 pb-3"><u>Edit Todo</u></h3>
+    <form action="/todos/edit/{{todo.id}}?_method=PUT" method="post" class="pt-3">
+      <div class="form-group">
+        <label for="name" class="sr-only">New todo</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo"
+          value="{{todo.name}}">
+      </div>
+      <div class="btn-group btn-group-toggle mb-3 d-flex pt-1" data-toggle="buttons">
+        <label class="btn btn-sm btn-secondary {{#if todo.done}}active{{/if}}">
+          <input type="radio" name="status" id="done" value="done" autocomplete="off"
+            {{#if todo.done}}checked{{/if}}>Done
+        </label>
+        <label class="btn btn-sm btn-secondary {{#if todo.done}}{{else}}active{{/if}}">
+          <input type="radio" name="status" id="notDone" value="notDone" autocomplete="off"
+            {{#if todo.done}}{{else}}checked{{/if}}>Undone
+        </label>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-block todo-submit">Submit</button>
+    </form>
+  </div>
+</section>

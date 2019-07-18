@@ -13,7 +13,7 @@ router.get('/', isAuthenticated, (req, res) => {
       if (!user) throw new Error('user not found')
       return Todo.findAll({ where: { UserId: req.user.id } })
     })
-    .then(todos => res.render('index', { todos }))
+    .then(todos => res.render('index', { todos, indexCSS: true }))
     .catch(error => res.status(422).json(error))
 
 })

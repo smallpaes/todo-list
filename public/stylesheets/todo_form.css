@@ -1,5 +1,9 @@
-form {
-  height:200px;
+form{
+  height:195px;
+  background: rgba(176,176,176, .6);
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-bottom: 10px;
 }
 
 .todo-submit {
@@ -14,3 +18,4 @@ form {
   background: #1E4258;
   color: white;
 }
+

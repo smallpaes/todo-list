@@ -9,7 +9,7 @@ const User = db.User
 // 認證系統的路由
 // 登入頁面
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login', { userCSS: true })
 })
 // 登入檢查
 router.post('/login', passport.authenticate('local', {
@@ -18,7 +18,7 @@ router.post('/login', passport.authenticate('local', {
 }))
 // 註冊頁面
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', { userCSS: true })
 })
 // 註冊檢查
 router.post('/register', (req, res) => {

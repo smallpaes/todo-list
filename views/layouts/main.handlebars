@@ -9,9 +9,15 @@
   <link rel="stylesheet" href="/stylesheets/bootstrap.css">
   <link rel="stylesheet" href="/stylesheets/css/all.css">
   <link rel="stylesheet" href="/stylesheets/main.css">
+  {{#if indexCSS}}
   <link rel="stylesheet" href="/stylesheets/index.css">
+  {{/if}}
+  {{#if userCSS}}
   <link rel="stylesheet" href="/stylesheets/user.css">
-  <link rel="stylesheet" href="/stylesheets/new.css">
+  {{/if}}
+  {{#if todoFormCSS}}
+  <link rel="stylesheet" href="/stylesheets/todo_form.css">
+  {{/if}}
   <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Reem+Kufi&display=swap" rel="stylesheet">
 </head>
