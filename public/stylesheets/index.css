@@ -1,3 +1,7 @@
+button:focus {
+  outline: none;
+}
+
 .todo-list {
   margin-top: 15px;
   height:400px;
@@ -108,20 +112,28 @@
   font-size: 1.2rem;
 }
 
+.todo-list .delete-model-btns button:focus {
+  outline: none;
+}
+
 .todo-list .delete-model-btns button:hover {
   -webkit-box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
   -moz-box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
   box-shadow: 1px 1px 5px 0px rgba(227,227,227,1);
 }
 
-.todo-list .delete-model-btns #delete-model-back:hover {
+.todo-list .delete-model-btns #delete-model-back:hover,
+.todo-list .delete-model-btns #delete-model-back:active {
   color: #14A76C;
   border-color: #14A76C;
   transition: all .3s linear;
+  border-style: solid;
 }
 
-.todo-list .delete-model-btns #delete-model-delete:hover {
+.todo-list .delete-model-btns #delete-model-delete:hover,
+.todo-list .delete-model-btns #delete-model-delete:active {
   color: #C3073F;
   border-color: #C3073F;
   transition: all .3s linear;
+  border-style: solid;
 }

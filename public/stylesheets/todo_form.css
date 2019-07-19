@@ -6,6 +6,12 @@ form {
   margin-bottom: 10px;
 }
 
+form .form-control:focus,
+form .form-control:hover {
+  box-shadow: none;
+  border-color: rgb(151, 151, 151);
+}
+
 .todo-submit {
   background: #265077;
   padding: 8px 12px;
