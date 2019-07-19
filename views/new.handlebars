@@ -6,7 +6,7 @@
       <div class="form-group">
         <label for="name" class="sr-only">New todo</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo" minlength="1"
-          maxlength="10" required>
+          maxlength="10" value="{{todo.name}}">
         <div class="invalid-feedback">
           Please fill in a task!
         </div>
@@ -14,14 +14,16 @@
       <div class="form-group">
         <label for="detail" class="sr-only">Detail</label>
         <textarea class="form-control" name="detail" id="detail" rows="3"
-          placeholder="Give the task some description here...">{{todo.detail}}</textarea>
+          placeholder="Give the task some description here..." maxlength="60">{{todo.detail}}</textarea>
       </div>
       <div class="btn-group btn-group-toggle mb-3 d-flex pt-1" data-toggle="buttons">
-        <label class="btn btn-sm btn-secondary">
-          <input type="radio" name="status" id="done" value="done" autocomplete="off">Done
+        <label class="btn btn-sm btn-secondary {{#if todo.done}}active{{/if}}">
+          <input type="radio" name="status" id="done" value="done" autocomplete="off"
+            {{#if todo.done}}checked{{/if}}>Done
         </label>
-        <label class="btn btn-sm btn-secondary active">
-          <input type="radio" name="status" id="notDone" value="notDone" autocomplete="off" checked>Undone
+        <label class="btn btn-sm btn-secondary {{#if todo.notDone}}active{{/if}}">
+          <input type="radio" name="status" id="notDone" value="notDone" autocomplete="off"
+            {{#if todo.notDone}}checked{{/if}}>Undone
         </label>
       </div>
       <hr>

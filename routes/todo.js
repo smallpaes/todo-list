@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const { body, validationResult } = require('express-validator')
 // Include todo and user models
 const db = require('../models')
 const User = db.User
@@ -29,12 +30,42 @@ router.get('/view/:id', isAuthenticated, (req, res) => {
 
 // create todo page
 router.get('/new', isAuthenticated, (req, res) => {
-  res.render('new', { todoFormCSS: true, formValidation: true })
+  res.render('new', { todoFormCSS: true, formValidation: true, todo: { notDone: true } })
 })
 
 // create todo submit
-router.post('/new', isAuthenticated, (req, res) => {
-  console.log(req.body.detail)
+router.post('/new', isAuthenticated, [
+  // validate name field
+  body('name')
+    .isLength({ min: 1, max: 10 })
+    .withMessage('Name is required, max 10 letters'),
+  // check status field
+  body('status')
+    .custom(value => {
+      if (value !== 'done' && value !== 'notDone') {
+        throw new Error('Please choose a task status')
+      }
+      // if status passed validation
+      return true
+    }),
+  // check detail field
+  body('detail')
+    .isLength({ max: 60 })
+    .withMessage('Detail length must be less than 60 words')
+], (req, res) => {
+  // keep user input
+  const { name, status, detail } = req.body
+  // retrieve error message from express-validator
+  const errors = validationResult(req)
+  // one or more error messages exist
+  if (!errors.isEmpty()) {
+    return res.status(422).render('new', {
+      todoFormCSS: true,
+      formValidation: true,
+      todo: { name, done: status === 'done', notDone: status === 'notDone' || !status, detail }
+    })
+  }
+  // pass validation
   Todo.create({
     name: req.body.name,
     done: req.body.status === 'done',
@@ -64,7 +95,38 @@ router.get('/edit/:id', isAuthenticated, (req, res) => {
 })
 
 // update todo submit
-router.put('/edit/:id', isAuthenticated, (req, res) => {
+router.put('/edit/:id', [
+  // validate name field
+  body('name')
+    .isLength({ min: 1, max: 10 })
+    .withMessage('Name is required, max 10 letters'),
+  // check status field
+  body('status')
+    .custom(value => {
+      if (value !== 'done' && value !== 'notDone') {
+        throw new Error('Please choose a task status')
+      }
+      // if status passed validation
+      return true
+    }),
+  // check detail field
+  body('detail')
+    .isLength({ max: 60 })
+    .withMessage('Detail length must be less than 60 words')
+], isAuthenticated, (req, res) => {
+  // keep user input
+  const { id, name, status, detail } = req.body
+  // retrieve error message from express-validator
+  const errors = validationResult(req)
+  // one or more error messages exist
+  if (!errors.isEmpty()) {
+    return res.status(422).render('edit', {
+      todoFormCSS: true,
+      formValidation: true,
+      todo: { id, name, done: status === 'done', notDone: status === 'notDone' || !status, detail }
+    })
+  }
+  // pass validation
   Todo.findOne({
     where: {
       Id: req.params.id,

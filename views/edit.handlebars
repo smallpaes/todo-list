@@ -3,6 +3,7 @@
   <div class="rounded" id="display-panel">
     <h3 class="text-center pt-3 pb-3"><u>Edit Todo</u></h3>
     <form action="/todos/edit/{{todo.id}}?_method=PUT" method="post" class="pt-3 needs-validation" novalidate>
+      <input type="hidden" name="id" id="id" value="{{todo.id}}">
       <div class="form-group">
         <label for="name" class="sr-only">New todo</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo" value="{{todo.name}}"
@@ -14,7 +15,7 @@
       <div class="form-group">
         <label for="detail" class="sr-only">Detail</label>
         <textarea class="form-control" name="detail" id="detail" rows="3"
-          placeholder="Give the task some description here...">{{todo.detail}}</textarea>
+          placeholder="Give the task some description here..." maxlength="60">{{todo.detail}}</textarea>
       </div>
       <div class="btn-group btn-group-toggle mb-3 d-flex pt-1" data-toggle="buttons">
         <label class="btn btn-sm btn-secondary {{#if todo.done}}active{{/if}}">
