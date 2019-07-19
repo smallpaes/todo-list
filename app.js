@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 // include dotenv when not in production mode
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
+const flash = require('connect-flash')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -40,8 +41,14 @@ app.use(passport.session())
 
 require('./config/passport')(passport)
 
+// set up connect-flash
+app.use(flash())
+
 app.use((req, res, next) => {
   res.locals.user = req.user
+  res.locals.reminder = req.flash('reminder')
+  res.locals.warning = req.flash('warning')
+  res.locals.success = req.flash('success')
   next()
 })
 

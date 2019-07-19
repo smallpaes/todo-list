@@ -3,6 +3,9 @@
   <h1 class="text-center my-4">
     Login
   </h1>
+  <!--Flash message-->
+  {{> messages}}
+
   <form action="/users/login" method="POST" class="mt-1 mb-4 px-3 needs-validation" novalidate>
     <div class="form-group form-input position-relative">
       <i class="far fa-envelope"></i>

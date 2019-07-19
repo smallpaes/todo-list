@@ -58,6 +58,7 @@ router.post('/register', [
     return res.status(422).render('register', {
       userCSS: true,
       formValidation: true,
+      warning: errors.array(),
       todoData: { name, email, password, password2 }
     })
   }
@@ -94,6 +95,7 @@ router.post('/register', [
 // 登出
 router.get('/logout', (req, res) => {
   req.logout()
+  req.flash('success', 'Log out successfully, see you next time :)')
   res.redirect('/users/login')
 })
 

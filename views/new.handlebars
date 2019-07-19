@@ -2,6 +2,9 @@
 <section id="display-container" class="position-relative rounded shadow">
   <div class="rounded" id="display-panel">
     <h3 class="text-center pt-3"><u>New Todo</u></h3>
+    <!--Flash message-->
+    {{> messages}}
+
     <form action="/todos/new" method="post" class="pt-3 needs-validation" novalidate>
       <div class="form-group">
         <label for="name" class="sr-only">New todo</label>

@@ -62,6 +62,7 @@ router.post('/new', isAuthenticated, [
     return res.status(422).render('new', {
       todoFormCSS: true,
       formValidation: true,
+      warning: errors.array(),
       todo: { name, done: status === 'done', notDone: status === 'notDone' || !status, detail }
     })
   }
@@ -123,6 +124,7 @@ router.put('/edit/:id', [
     return res.status(422).render('edit', {
       todoFormCSS: true,
       formValidation: true,
+      warning: errors.array(),
       todo: { id, name, done: status === 'done', notDone: status === 'notDone' || !status, detail }
     })
   }

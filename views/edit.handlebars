@@ -2,6 +2,9 @@
 <section id="display-container" class="position-relative rounded shadow">
   <div class="rounded" id="display-panel">
     <h3 class="text-center pt-3 pb-3"><u>Edit Todo</u></h3>
+    <!--Flash message-->
+    {{> messages}}
+
     <form action="/todos/edit/{{todo.id}}?_method=PUT" method="post" class="pt-3 needs-validation" novalidate>
       <input type="hidden" name="id" id="id" value="{{todo.id}}">
       <div class="form-group">
