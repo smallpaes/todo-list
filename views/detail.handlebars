@@ -27,7 +27,9 @@
             </div>
             <div class="modal-footer delete-model-btns border-0 pt-1">
               <button type="button" id="delete-model-back" data-dismiss="modal">Go back</button>
-              <button type="button" id="delete-model-delete">Delete</button>
+              <form action="/todos/delete/{{todo.id}}?_method=DELETE" method="post" class="m-0">
+                <button type="submit" id="delete-model-delete">Delete</button>
+              </form>
             </div>
           </div>
         </div>
