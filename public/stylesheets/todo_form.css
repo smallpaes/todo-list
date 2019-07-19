@@ -12,6 +12,26 @@ form .form-control:hover {
   border-color: rgb(151, 151, 151);
 }
 
+.was-validated .form-control:invalid, 
+.form-control.is-invalid {
+  background-image: none;
+}
+
+.was-validated .form-control:invalid:focus, 
+.form-control.is-invalid:focus {
+  box-shadow: none;
+}
+
+.was-validated .form-control:valid, 
+.form-control.is-valid {
+  background-image: none;
+}
+
+.was-validated .form-control:valid:focus, 
+.form-control.is-valid:focus {
+  box-shadow: none;
+}
+
 .todo-submit {
   background: #265077;
   padding: 8px 12px;

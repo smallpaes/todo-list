@@ -3,28 +3,53 @@
   <h1 class="text-center my-4">
     Register
   </h1>
-  <form action="/users/register" method="POST" class="mt-1 mb-4 px-3">
+  <form action="/users/register" method="POST" class="mt-1 mb-4 px-3 needs-validation" novalidate>
     <div class="form-group form-input position-relative">
       <i class="fas fa-signature"></i>
       <label for="name" class="sr-only">Name</label>
-      <input type="name" id="name" name="name" class="form-control" placeholder="Name" value="{{{name}}}" />
+      <input type="name" id="name" name="name" class="form-control" placeholder="Name" value="{{{name}}}" required />
+      <div class="valid-feedback">
+        Ready to do!
+      </div>
+      <div class="invalid-feedback">
+        Please fill in a name!
+      </div>
     </div>
     <div class="form-group form-input position-relative">
       <i class="far fa-envelope"></i>
       <label for="email" class="sr-only">Email</label>
-      <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{{email}}}" />
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{{email}}}"
+        required />
+      <div class="valid-feedback">
+        Ready to do!
+      </div>
+      <div class="invalid-feedback">
+        Please fill in a valid email!
+      </div>
     </div>
     <div class="form-group form-input position-relative">
       <i class="fas fa-lock"></i>
       <label for="password" class="sr-only">Password</label>
       <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-        value="{{{password}}}" />
+        value="{{{password}}}" pattern="\S{8,12}" minlength="8" maxlength="12" required />
+      <div class="valid-feedback">
+        Ready to do!
+      </div>
+      <div class="invalid-feedback">
+        Password length must be between 8-12!
+      </div>
     </div>
     <div class="form-group form-input position-relative">
       <i class="fas fa-lock"></i>
       <label for="password2" class="sr-only">Confirm Password</label>
       <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
-        value="{{{password2}}}" />
+        value="{{{password2}}}" pattern="\S{8,12}" minlength="8" maxlength="12" required />
+      <div class="valid-feedback">
+        Ready to do!
+      </div>
+      <div class="invalid-feedback">
+        Password doesn't match!
+      </div>
     </div>
     <button type="submit" class="user-form-btn btn-block btn-orange">Register</button>
 

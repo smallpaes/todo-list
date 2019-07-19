@@ -2,10 +2,14 @@
 <section id="display-container" class="position-relative rounded shadow">
   <div class="rounded" id="display-panel">
     <h3 class="text-center pt-3"><u>New Todo</u></h3>
-    <form action="/todos/new" method="post" class="pt-3">
+    <form action="/todos/new" method="post" class="pt-3 needs-validation" novalidate>
       <div class="form-group">
         <label for="name" class="sr-only">New todo</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo" minlength="1"
+          maxlength="10" required>
+        <div class="invalid-feedback">
+          Please fill in a task!
+        </div>
       </div>
       <div class="form-group">
         <label for="detail" class="sr-only">Detail</label>

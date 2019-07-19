@@ -21,6 +21,26 @@ form .form-control:hover {
   border-color: rgb(151, 151, 151);
 }
 
+.was-validated .form-control:invalid, 
+.form-control.is-invalid {
+  background-image: none;
+}
+
+.was-validated .form-control:invalid:focus, 
+.form-control.is-invalid:focus {
+  box-shadow: none;
+}
+
+.was-validated .form-control:valid, 
+.form-control.is-valid {
+  background-image: none;
+}
+
+.was-validated .form-control:valid:focus, 
+.form-control.is-valid:focus {
+  box-shadow: none;
+}
+
 /* Chrome, Firefox, Opera, Safari 10.1+ */
 .form-control::placeholder { 
   color: rgb(173, 173, 173);
@@ -39,9 +59,8 @@ form .form-control:hover {
 
 form .form-input i {
   position: absolute;
-  top: 50%;
+  top: 11px;
   left: 9;
-  transform: translateY(-50%);
 }
 
 form .form-input input {
