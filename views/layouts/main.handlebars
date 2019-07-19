@@ -33,11 +33,13 @@
     <a href="/" class="navbar-brand text-dark font-weight-bolder border-bottom border-dark">My Todo List</a>
 
     <ul class="navbar-nav d-flex flex-row">
+      {{#if user}}
       <li class="nav-item">
         <a href="/todos/new" class="new-task-btn"><i class="fas fa-plus py-1"></i><span
             class="ml-1 d-none d-md-inline">New
             Task</span></a>
       </li>
+      {{/if}}
       <li class="nav-item ml-3">
         <a href="/users/logout" class="log-out-btn">{{#if user}}Log out{{else}}Login Now{{/if}}</a>
       </li>
