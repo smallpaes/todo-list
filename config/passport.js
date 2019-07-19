@@ -1,5 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 const bcrypt = require('bcryptjs')
 // Include user model
 const db = require('../models')
@@ -22,6 +23,41 @@ module.exports = passport => {
         return done(null, user)
       })
   }))
+
+  // use Facebook to login
+  passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_ID,
+    clientSecret: process.env.FACEBOOK_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    profileFields: ['displayName', 'photos', 'email']
+  },
+    (accessToken, refreshToken, profile, done) => {
+      User.findOne({ where: { email: profile._json.email } })
+        .then(async (user) => {
+          // if user exist
+          if (user) { return done(null, user) }
+          try {
+            // new user, generate a set of random password
+            const randomPassword = Math.random().toString(32).slice(-8)
+            // bcrypt password
+            const salt = await bcrypt.genSalt(10)
+            const hash = await bcrypt.hash(randomPassword, salt)
+            // create new user object and save
+            User.create({
+              name: profile._json.name,
+              email: profile._json.email,
+              password: hash
+            })
+              .then(user => done(null, user))
+              .catch(error => done(error))
+          } catch (error) {
+            done(error)
+          }
+        })
+      console.log(profile._json)
+      console.log(profile._json.picture.data.url)
+    }
+  ))
 
   passport.serializeUser((user, done) => {
     done(null, user.id)

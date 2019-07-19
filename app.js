@@ -1,15 +1,18 @@
 // app.js
 const express = require('express')
 const app = express()
-
+// include dotenv when not in production mode
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const userRoutes = require('./routes/user')
 const todoRoutes = require('./routes/todo')
 const homeRoutes = require('./routes/home')
+const authRoutes = require('./routes/auth')
 const passport = require('passport')
 const session = require('express-session')
+
 
 // Include models
 const db = require('./models')
@@ -47,6 +50,8 @@ app.use(express.static('public'))
 app.use('/todos', todoRoutes)
 
 app.use('/users', userRoutes)
+
+app.use('/auth', authRoutes)
 
 app.use('/', homeRoutes)
 

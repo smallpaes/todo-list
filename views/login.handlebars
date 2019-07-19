@@ -1,20 +1,36 @@
 <!-- ./views/login.handlebars -->
-<div class="card card-body shadow text-dark mt-5 mx-auto">
-  <h1 class="text-center mb-3">
+<div class="card card-body shadow text-dark mt-5 mx-auto p-0 border-0">
+  <h1 class="text-center my-4">
     Login
   </h1>
-  <form action="/users/login" method="POST">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+  <form action="/users/login" method="POST" class="mt-1 mb-4 px-3">
+    <div class="form-group form-input position-relative">
+      <i class="far fa-envelope"></i>
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+    <div class="form-group form-input position-relative">
+      <i class="fas fa-lock"></i>
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
     </div>
-    <button type="submit" class="user-form-btn btn-block">Login</button>
+    <button type="submit" class="user-form-btn btn-block btn-orange">Login</button>
+
+    <!--Facebook Login-->
+    <div class="separate-line position-relative pt-1">
+      <small class="text-muted">or</small>
+      <hr>
+    </div>
+    <div class="form-group p-0">
+      <a href="/auth/facebook" class="user-form-btn btn-block btn-facebook-blue text-center"><i
+          class="fab fa-facebook-square mr-2 align-middle"></i>Login in with Facebook</a>
+    </div>
+    <hr>
+
+    <!--No account-->
+    <div class="d-flex justify-content-between align-items-center mt-4 ">
+      <p class=" m-0 text-muted">No account yet? Sign up now!</p>
+      <a href="/users/register" class="login-signup-btn flex-grow-1 text-center ml-5">Register</a>
+    </div>
   </form>
-  <p class="lead mt-4">
-    No Account? <a href="/users/register">Register</a>
-  </p>
 </div>
