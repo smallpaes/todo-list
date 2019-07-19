@@ -8,7 +8,7 @@
       <i class="fas fa-signature"></i>
       <label for="name" class="sr-only">Name</label>
       <input type="name" id="name" name="name" class="form-control" placeholder="Name" minlength="1" maxlength="10"
-        value="{{{todoData.name}}}" />
+        value="{{{todoData.name}}}" required />
       <div class="valid-feedback">
         Ready to do!
       </div>
@@ -19,8 +19,8 @@
     <div class="form-group form-input position-relative">
       <i class="far fa-envelope"></i>
       <label for="email" class="sr-only">Email</label>
-      <input type="email" id="email" name="email" class="form-control" placeholder="Email"
-        value="{{{todoData.email}}}" />
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{{todoData.email}}}"
+        required />
       <div class="valid-feedback">
         Ready to do!
       </div>
@@ -32,7 +32,7 @@
       <i class="fas fa-lock"></i>
       <label for="password" class="sr-only">Password</label>
       <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-        value="{{{todoData.password}}}" pattern="\S{8,12}" minlength="8" maxlength="12" />
+        value="{{{todoData.password}}}" pattern="\S{8,12}" minlength="8" maxlength="12" required />
       <div class="valid-feedback">
         Ready to do!
       </div>
@@ -44,7 +44,7 @@
       <i class="fas fa-lock"></i>
       <label for="password2" class="sr-only">Confirm Password</label>
       <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
-        value="{{{todoData.password2}}}" pattern="\S{8,12}" minlength="8" maxlength="12" />
+        value="{{{todoData.password2}}}" pattern="\S{8,12}" minlength="8" maxlength="12" required />
       <div class="valid-feedback">
         Ready to do!
       </div>
