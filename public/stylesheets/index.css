@@ -2,9 +2,20 @@ button:focus {
   outline: none;
 }
 
+#filter-panel {
+  min-height: 40px;
+  background: rgba(176,176,176, .6);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#filter-panel .dropdown-menu {
+  max-height: 122px;
+  overflow-y: scroll;
+}
+
 .todo-list {
-  margin-top: 15px;
-  height:400px;
+  max-height:400px;
   overflow-y: scroll;
   padding: 0;
 }
@@ -18,6 +29,10 @@ button:focus {
   font-size: 1.5rem;
   background: rgba(176,176,176, .6);
   padding: 0 5px;
+}
+
+.todo-list .row:first-of-type {
+  margin-top: 0;
 }
 
 .todo-list .input-container {

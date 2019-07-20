@@ -10,14 +10,22 @@ const { isAuthenticated } = require('../config/auth')
 const { convertDate } = require('../date-converter')
 
 router.get('/', isAuthenticated, (req, res) => {
-  User.findByPk(req.user.id)
-    .then(user => {
-      if (!user) throw new Error('user not found')
-      return Todo.findAll({ where: { UserId: req.user.id } })
-    })
+  Todo.findAll({
+    where: { UserId: req.user.id },
+    order: [['dueDate', 'DESC']]
+  })
     .then(todos => {
-      todos.forEach(todo => todo.dataValues.dueDate = convertDate(todo.dataValues.dueDate))
-      return res.render('index', { todos, indexCSS: true })
+      // Filter option for all unique date
+      const dateOptions = []
+      todos.forEach(todo => {
+        // convert date
+        const convertedDate = convertDate(todo.dataValues.dueDate)
+        // Add unique date to date filter
+        if (!dateOptions.includes(convertedDate)) { dateOptions.push(convertedDate) }
+        // convert all displayed date
+        todo.dataValues.dueDate = convertedDate
+      })
+      res.render('index', { todos, indexCSS: true, dateOptions })
     })
     .catch(error => res.status(422).json(error))
 

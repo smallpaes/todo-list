@@ -1,7 +1,46 @@
 <!--Todo list-->
 <section id="display-container" class="position-relative rounded shadow">
   <div class="rounded" id="display-panel">
-    <h3 class="text-center pt-3"><u>Todo List</u></h3>
+    <h3 class="text-center py-3"><u>Todo List</u></h3>
+    <form action="/search" method="get" id="filter-panel" class="mb-1">
+      <div class="form-row">
+        <div class="dropdown col-4 text-center">
+          <button class="btn btn-link dropdown-toggle text-dark" type="button" id="sortDropDownMenu"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort
+          </button>
+          <div class="dropdown-menu" aria-labelledby="sortDropDownMenu">
+            <input type="hidden" name="preSort" value="{{filter.sort}}">
+            <input type="submit" class="dropdown-item text-muted" name="sort" value="Name">
+            <input type="submit" class="dropdown-item text-muted" name="sort" value="Deadline">
+            <input type="submit" class="dropdown-item text-muted" name="sort" value="Status">
+          </div>
+        </div>
+        <div class="dropdown col-4 text-center">
+          <button class="btn btn-link dropdown-toggle text-dark" type="button" id="dateDropDownMenu"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Date
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dateDropDownMenu">
+            <input type="hidden" name="preDate" value="{{filter.dueDate}}">
+            {{#each dateOptions}}
+            <input type="submit" class="dropdown-item text-muted" name="date" value="{{this}}">
+            {{/each}}
+          </div>
+        </div>
+        <div class="dropdown col-4 text-center">
+          <button class="btn btn-link dropdown-toggle text-dark" type="button" id="statusDropDownMenu"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Status
+          </button>
+          <div class="dropdown-menu" aria-labelledby="statusDropDownMenu">
+            <input type="hidden" name="preDone" value="{{filter.status}}">
+            <input type="submit" class="dropdown-item text-muted" name="done" value="Done">
+            <input type="submit" class="dropdown-item text-muted" name="done" value="Undone">
+          </div>
+        </div>
+      </div>
+    </form>
     <div class="todo-list">
       {{#each todos}}
       <div class="row">
@@ -11,7 +50,7 @@
             <span class="checkmark"></span>
             <div class="ml-4 pl-2">
               <h4 class="m-0 p-0">{{this.name}}</h4>
-              <small class="d-block">{{this.dueDate}}</small>
+              <small class="d-block">{{this.dataValues.dueDate}}</small>
             </div>
           </label>
         </a>

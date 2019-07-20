@@ -11,6 +11,7 @@ const userRoutes = require('./routes/user')
 const todoRoutes = require('./routes/todo')
 const homeRoutes = require('./routes/home')
 const authRoutes = require('./routes/auth')
+const searchRoutes = require('./routes/search')
 const passport = require('passport')
 const session = require('express-session')
 
@@ -59,6 +60,8 @@ app.use('/todos', todoRoutes)
 app.use('/users', userRoutes)
 
 app.use('/auth', authRoutes)
+
+app.use('/search', searchRoutes)
 
 app.use('/', homeRoutes)
 
