@@ -3,8 +3,12 @@
   <div class="rounded" id="display-panel">
     <h3 class="text-center pt-3 pb-3"><u>Todo</u></h3>
     <div class="detail-panel-title mb-2 d-flex align-items-center px-3">
-      <h5 class="m-0 pr-3"><i class="far fa-calendar-check"></i></h5>
+      <h5 class="m-0 pr-3"><i class="far fa-file-alt"></i></h5>
       <h4 class="m-0">{{todo.name}}</h4>
+    </div>
+    <div class="detail-panel-title mb-2 d-flex align-items-center px-3">
+      <h5 class="m-0 pr-3"><i class="far fa-calendar-check"></i></h5>
+      <p class="m-0">{{todo.dueDate}}</p>
     </div>
     <div class="detail-panel-detail mb-2 px-3 d-flex flex-column justify-content-between text-break">
       <p class="p-0 m-0 pt-2">{{#if todo.detail}}{{todo.detail}}{{else}}No Detail...{{/if}}</p>

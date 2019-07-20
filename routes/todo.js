@@ -7,6 +7,8 @@ const User = db.User
 const Todo = db.Todo
 // Include isAuthenticated module
 const { isAuthenticated } = require('../config/auth')
+// Include date converter
+const { convertDate } = require('../date-converter')
 
 router.get('/', isAuthenticated, (req, res) => {
   res.send('list all todos')
@@ -24,7 +26,10 @@ router.get('/view/:id', isAuthenticated, (req, res) => {
         }
       })
     })
-    .then(todo => res.render('detail', { todo, detailCSS: true }))
+    .then(todo => {
+      todo.dataValues.dueDate = convertDate(todo.dataValues.dueDate)
+      res.render('detail', { todo, detailCSS: true })
+    })
     .catch(error => res.status(422).json(error))
 })
 
@@ -54,7 +59,7 @@ router.post('/new', isAuthenticated, [
     .withMessage('Detail length must be less than 60 words')
 ], (req, res) => {
   // keep user input
-  const { name, status, detail } = req.body
+  const { name, status, detail, dueDate } = req.body
   // retrieve error message from express-validator
   const errors = validationResult(req)
   // one or more error messages exist
@@ -63,15 +68,16 @@ router.post('/new', isAuthenticated, [
       todoFormCSS: true,
       formValidation: true,
       warning: errors.array(),
-      todo: { name, done: status === 'done', notDone: status === 'notDone' || !status, detail }
+      todo: { name, done: status === 'done', notDone: status === 'notDone' || !status, detail, dueDate }
     })
   }
   // pass validation
   Todo.create({
-    name: req.body.name,
+    name,
     done: req.body.status === 'done',
-    detail: req.body.detail,
-    UserId: req.user.id
+    detail,
+    UserId: req.user.id,
+    dueDate
   })
     .then(todo => {
       console.log(todo)
@@ -92,7 +98,10 @@ router.get('/edit/:id', isAuthenticated, (req, res) => {
         }
       })
     })
-    .then(todo => res.render('edit', { todo, todoFormCSS: true, formValidation: true }))
+    .then(todo => {
+      todo.dataValues.dueDate = convertDate(todo.dataValues.dueDate)
+      return res.render('edit', { todo, todoFormCSS: true, formValidation: true })
+    })
 })
 
 // update todo submit
@@ -116,7 +125,7 @@ router.put('/edit/:id', [
     .withMessage('Detail length must be less than 60 words')
 ], isAuthenticated, (req, res) => {
   // keep user input
-  const { id, name, status, detail } = req.body
+  const { id, name, status, detail, dueDate } = req.body
   // retrieve error message from express-validator
   const errors = validationResult(req)
   // one or more error messages exist
@@ -125,7 +134,7 @@ router.put('/edit/:id', [
       todoFormCSS: true,
       formValidation: true,
       warning: errors.array(),
-      todo: { id, name, done: status === 'done', notDone: status === 'notDone' || !status, detail }
+      todo: { id, name, done: status === 'done', notDone: status === 'notDone' || !status, detail, dueDate }
     })
   }
   // pass validation
@@ -136,9 +145,10 @@ router.put('/edit/:id', [
     }
   })
     .then(todo => {
-      todo.name = req.body.name
+      todo.name = name
       todo.done = req.body.status === 'done'
-      todo.detail = req.body.detail
+      todo.detail = detail
+      todo.dueDate = dueDate
       return todo.save()
     })
     // .then(todo => res.redirect(`/todos/edit/${req.params.id}`))

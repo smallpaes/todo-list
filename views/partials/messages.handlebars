@@ -1,6 +1,6 @@
 <!--Reminder-->
 {{#if reminder}}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-warning alert-dismissible fade show rounded-0" role="alert">
   {{reminder}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -10,7 +10,7 @@
 
 <!--Warning-->
 {{#each warning}}
-<div class="alert alert-warning alert-danger fade show" role="alert">
+<div class="alert alert-warning alert-danger fade show rounded-0" role="alert">
   {{this.msg}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -20,7 +20,7 @@
 
 <!--Success-->
 {{#if success}}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="alert alert-success alert-dismissible fade show rounded-0" role="alert">
   {{success}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>

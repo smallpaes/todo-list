@@ -9,7 +9,10 @@
           <label class="input-container m-0">
             <input type="checkbox" name="done" id="done" {{#if this.done}}checked{{/if}} disabled>
             <span class="checkmark"></span>
-            <h4 class="m-0 ml-4 p-0">{{this.name}}</h4>
+            <div class="ml-4 pl-2">
+              <h4 class="m-0 p-0">{{this.name}}</h4>
+              <small class="d-block">{{this.dueDate}}</small>
+            </div>
           </label>
         </a>
         <div class="col-3 d-flex align-items-center">

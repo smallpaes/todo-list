@@ -10,7 +10,7 @@ button:focus {
 }
 
 .todo-list .row {
-  min-height: 50px;
+  min-height: 55px;
   border-radius: 5px;
   list-style-type: none;
   margin: 5px 0;
@@ -92,6 +92,12 @@ button:focus {
 .todo-list .delete-btn:hover {
   text-decoration: none;
   color: #000000;
+}
+
+.input-container small {
+  font-size: .8rem;
+  line-height: .8rem;
+  color: rgb(107, 104, 104);
 }
 
 .todo-list .delete-modal {

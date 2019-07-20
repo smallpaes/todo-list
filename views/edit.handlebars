@@ -7,20 +7,38 @@
 
     <form action="/todos/edit/{{todo.id}}?_method=PUT" method="post" class="pt-3 needs-validation" novalidate>
       <input type="hidden" name="id" id="id" value="{{todo.id}}">
-      <div class="form-group">
-        <label for="name" class="sr-only">New todo</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo" value="{{todo.name}}"
-          minlength="1" maxlength="10" required>
-        <div class="invalid-feedback">
-          Please fill in a task!
+
+      <div class="form-row">
+        <!--Name-->
+        <div class="col tool-tip-container">
+          <small class="tool-tip name-tip">Max: 10 letters</small>
+          <label for="name" class="sr-only">New todo</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter new todo" minlength="1"
+            maxlength="10" value="{{todo.name}}" required>
+          <div class="invalid-feedback">
+            Please fill in a task!
+          </div>
+        </div>
+        <!--Due Date-->
+        <div class="col tool-tip-container">
+          <small class="tool-tip date-tip">Due Date</small>
+          <label for="dueDate" class="sr-only">Due Date</label>
+          <input type="date" class="form-control" id="dueDate" name="dueDate" value="{{todo.dueDate}}" min="2019-01-01"
+            max="2025-12-31" required>
+          <div class="invalid-feedback">
+            Please fill in a task!
+          </div>
         </div>
       </div>
-      <div class="form-group">
+      <!--Detail-->
+      <div class="form-group mt-2">
         <label for="detail" class="sr-only">Detail</label>
         <textarea class="form-control" name="detail" id="detail" rows="3"
           placeholder="Give the task some description here..." maxlength="60">{{todo.detail}}</textarea>
       </div>
-      <div class="btn-group btn-group-toggle mb-3 d-flex pt-1" data-toggle="buttons">
+      <!--Status-->
+      <div class="btn-group btn-group-toggle mb-3 d-flex pt-1 tool-tip-container" data-toggle="buttons">
+        <small class="tool-tip status-tip">Current Status</small>
         <label class="btn btn-sm btn-secondary {{#if todo.done}}active{{/if}}">
           <input type="radio" name="status" id="done" value="done" autocomplete="off"
             {{#if todo.done}}checked{{/if}}>Done

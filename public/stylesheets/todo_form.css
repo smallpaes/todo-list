@@ -6,10 +6,71 @@ form {
   margin-bottom: 10px;
 }
 
+form .form-control {
+  color: #6c757d;
+}
+
 form .form-control:focus,
 form .form-control:hover {
   box-shadow: none;
   border-color: rgb(151, 151, 151);
+  color: #6c757d;
+}
+
+/*Tool tips*/
+.tool-tip-container {
+  position: relative;
+}
+
+.tool-tip-container .tool-tip {
+  position: absolute;
+  top: -28px;
+  background: rgb(85, 85, 85);
+  color: #FFFFFF;
+  width: 100px;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 5px;
+  visibility: hidden; 
+  /*Fade in affect*/
+  opacity: 0; 
+  transition: opacity .3s;
+  z-index: 1;
+}
+
+.tool-tip-container .name-tip,
+.tool-tip-container .status-tip {
+  left: 20%;
+}
+
+.tool-tip-container .date-tip {
+  left: 40%;
+}
+
+/*Tool tip arrow*/
+.tool-tip-container .tool-tip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(85, 85, 85) transparent transparent transparent;
+}
+
+.tool-tip-container .name-tip::after,
+.tool-tip-container .status-tip::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tool-tip-container .date-tip::after {
+  left: 20%;
+}
+
+/*Show tooltip*/
+.tool-tip-container:hover .tool-tip {
+  opacity: 1;
+  visibility: visible;
 }
 
 .was-validated .form-control:invalid, 
