@@ -16,16 +16,12 @@ router.get('/', isAuthenticated, (req, res) => {
 
 // show one todo
 router.get('/view/:id', isAuthenticated, (req, res) => {
-  User.findByPk(req.user.id)
-    .then(user => {
-      if (!user) throw new Error('user not found')
-      return Todo.findOne({
-        where: {
-          UserId: req.user.id,
-          Id: req.params.id
-        }
-      })
-    })
+  Todo.findOne({
+    where: {
+      UserId: req.user.id,
+      Id: req.params.id
+    }
+  })
     .then(todo => {
       todo.dataValues.dueDate = convertDate(todo.dataValues.dueDate)
       res.render('detail', { todo, detailCSS: true })
@@ -71,6 +67,7 @@ router.post('/new', isAuthenticated, [
       todo: { name, done: status === 'done', notDone: status === 'notDone' || !status, detail, dueDate }
     })
   }
+
   // pass validation
   Todo.create({
     name,
@@ -79,25 +76,18 @@ router.post('/new', isAuthenticated, [
     UserId: req.user.id,
     dueDate
   })
-    .then(todo => {
-      console.log(todo)
-      return res.redirect('/')
-    })
+    .then(todo => res.redirect('/'))
     .catch(error => res.status(422).json(err))
 })
 
 // update todo page
 router.get('/edit/:id', isAuthenticated, (req, res) => {
-  User.findByPk(req.user.id)
-    .then(user => {
-      if (!user) throw new Error('user not found')
-      return Todo.findOne({
-        where: {
-          Id: req.params.id,
-          UserId: req.user.id
-        }
-      })
-    })
+  Todo.findOne({
+    where: {
+      Id: req.params.id,
+      UserId: req.user.id
+    }
+  })
     .then(todo => {
       todo.dataValues.dueDate = convertDate(todo.dataValues.dueDate)
       return res.render('edit', { todo, todoFormCSS: true, formValidation: true })
@@ -158,16 +148,12 @@ router.put('/edit/:id', [
 
 // delete todo 
 router.delete('/delete/:id', isAuthenticated, (req, res) => {
-  User.findByPk(req.user.id)
-    .then(user => {
-      if (!user) throw new Error('user not found')
-      return Todo.destroy({
-        where: {
-          UserId: req.user.id,
-          Id: req.params.id
-        }
-      })
-    })
+  Todo.destroy({
+    where: {
+      UserId: req.user.id,
+      Id: req.params.id
+    }
+  })
     .then(todo => res.redirect('/'))
     .catch(error => res.status(422).json(error))
 })
