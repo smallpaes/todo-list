@@ -7,7 +7,7 @@
         <div class="dropdown col-4 text-center">
           <button class="btn btn-link dropdown-toggle text-dark" type="button" id="sortDropDownMenu"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort
+            {{#if filter.sort}}{{filter.sort}}{{else}}Sort{{/if}}
           </button>
           <div class="dropdown-menu" aria-labelledby="sortDropDownMenu">
             <input type="hidden" name="preSort" value="{{filter.sort}}">
@@ -19,7 +19,7 @@
         <div class="dropdown col-4 text-center">
           <button class="btn btn-link dropdown-toggle text-dark" type="button" id="dateDropDownMenu"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Date
+            {{#if filter.dueDate}}{{filter.dueDate}}{{else}}Date{{/if}}
           </button>
           <div class="dropdown-menu" aria-labelledby="dateDropDownMenu">
             <input type="hidden" name="preDate" value="{{filter.dueDate}}">
@@ -31,7 +31,7 @@
         <div class="dropdown col-4 text-center">
           <button class="btn btn-link dropdown-toggle text-dark" type="button" id="statusDropDownMenu"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Status
+            {{#if filter.status}}{{filter.status}}{{else}}Status{{/if}}
           </button>
           <div class="dropdown-menu" aria-labelledby="statusDropDownMenu">
             <input type="hidden" name="preDone" value="{{filter.status}}">
