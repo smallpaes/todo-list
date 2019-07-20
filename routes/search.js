@@ -13,8 +13,8 @@ const Op = require('sequelize').Op
 router.get('/', isAuthenticated, (req, res) => {
   // retrieve data user selected
   const selectedSort = req.query.sort || req.query.preSort
-  const selectedStatus = req.query.done || req.query.preDone
-  const selectedDueDate = req.query.date || req.query.preDate
+  const selectedStatus = req.query.doneReset ? null : req.query.done || req.query.preDone
+  const selectedDueDate = req.query.dateReset ? null : req.query.date || req.query.preDate
   // get criteria
   const sort = selectedSort === 'Name' ? 'name'
     : selectedSort === 'Status' ? 'done'
@@ -30,7 +30,8 @@ router.get('/', isAuthenticated, (req, res) => {
   Todo.findAll({
     attributes: ['dueDate'],
     where: { UserId: req.user.id },
-    group: ['dueDate']
+    group: ['dueDate'],
+    order: [['dueDate', 'DESC']]
   })
     .then(allDate => {
       allDate.forEach(date => dateOptions.push(convertDate(date.dataValues.dueDate)))
@@ -50,6 +51,7 @@ router.get('/', isAuthenticated, (req, res) => {
         todos,
         indexCSS: true,
         dateOptions,
+        noTask: todos.length === 0,
         filter: { sort: selectedSort, status: selectedStatus, dueDate: selectedDueDate }
       })
     })
