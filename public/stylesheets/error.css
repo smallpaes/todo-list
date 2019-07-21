@@ -1,0 +1,17 @@
+.error-btn {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #FFFFFF;
+  border-color: transparent;
+  background: #F79102;
+}
+
+.error-btn:hover {
+  text-decoration: none;
+  color: white;
+  -webkit-box-shadow: 1px 1px 6px -1px rgba(71,71,71,1);
+  -moz-box-shadow: 1px 1px 6px -1px rgb(63, 25, 25);
+  box-shadow: 1px 1px 6px -1px rgba(71,71,71,1);
+}

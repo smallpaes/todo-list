@@ -15,6 +15,7 @@ const authRoutes = require('./routes/auth')
 const searchRoutes = require('./routes/search')
 const passport = require('passport')
 const session = require('express-session')
+const errorController = require('./controllers/error')
 
 // Initialize csrf protection  middleware
 const csrfProtection = csrf()
@@ -72,6 +73,8 @@ app.use('/auth', authRoutes)
 app.use('/search', searchRoutes)
 
 app.use('/', homeRoutes)
+
+app.use(errorController.getError)
 
 // 設定 express port 3000
 app.listen(port, () => {
