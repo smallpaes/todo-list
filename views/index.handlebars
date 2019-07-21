@@ -47,7 +47,7 @@
     </form>
     <div class="todo-list">
       {{#each todos}}
-      <div class="row">
+      <div class="row animated bounceInUp">
         <a href="/todos/view/{{this.id}}" class="col-9 d-flex align-items-center">
           <label class="input-container m-0">
             <input type="checkbox" name="done" id="done" {{#if this.done}}checked{{/if}} disabled>
