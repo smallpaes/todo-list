@@ -5,6 +5,7 @@ body {
   background-size: cover;
   height: 100vh;
   font-family: 'Lobster', cursive;
+  z-index: -2;
 }
 
 div.overlay {
@@ -13,7 +14,8 @@ div.overlay {
   bottom:0;
   left: 0;
   right: 0;
-  background:rgba(255,255,255,.2)
+  background:rgba(255,255,255,.2);
+  z-index: -1;
 }
 
 /*Navbar*/

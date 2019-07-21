@@ -25,7 +25,7 @@ router.get('/', isAuthenticated, (req, res) => {
         // convert all displayed date
         todo.dataValues.dueDate = convertedDate
       })
-      res.render('index', { todos, indexCSS: true, dateOptions, noTask: todos.length === 0 })
+      res.render('index', { todos, indexCSS: true, dateOptions, noTask: todos.length === 0, hasAnimation: true })
     })
     .catch(error => res.status(422).json(error))
 

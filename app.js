@@ -6,6 +6,7 @@ if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 const flash = require('connect-flash')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const csrf = require('csurf')
 const methodOverride = require('method-override')
 const userRoutes = require('./routes/user')
 const todoRoutes = require('./routes/todo')
@@ -15,6 +16,8 @@ const searchRoutes = require('./routes/search')
 const passport = require('passport')
 const session = require('express-session')
 
+// Initialize csrf protection  middleware
+const csrfProtection = csrf()
 
 // Include models
 const db = require('./models')
@@ -45,11 +48,16 @@ require('./config/passport')(passport)
 // set up connect-flash
 app.use(flash())
 
+// use csrf protection middleware after session
+app.use(csrfProtection)
+
 app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.reminder = req.flash('reminder')
   res.locals.warning = req.flash('warning')
   res.locals.success = req.flash('success')
+  // generate one CSRF token to every render page
+  res.locals.csrfToken = req.csrfToken()
   next()
 })
 

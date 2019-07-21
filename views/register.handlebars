@@ -7,6 +7,9 @@
   {{> messages}}
 
   <form action="/users/register" method="POST" class="mt-1 mb-4 px-3 needs-validation" novalidate>
+    <!--CSRF token-->
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <!--Form-->
     <div class="form-group form-input position-relative animateField">
       <i class="fas fa-signature"></i>
       <label for="name" class="sr-only">Name</label>

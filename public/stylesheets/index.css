@@ -2,6 +2,10 @@ button:focus {
   outline: none;
 }
 
+section {
+  z-index: 1;
+}
+
 #filter-panel {
   min-height: 40px;
   background: rgba(176,176,176, .6);

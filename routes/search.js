@@ -52,6 +52,7 @@ router.get('/', isAuthenticated, (req, res) => {
         indexCSS: true,
         dateOptions,
         noTask: todos.length === 0,
+        hasAnimation: true,
         filter: { sort: selectedSort, status: selectedStatus, dueDate: selectedDueDate }
       })
     })

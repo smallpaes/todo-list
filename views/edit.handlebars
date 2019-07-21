@@ -6,8 +6,11 @@
     {{> messages}}
 
     <form action="/todos/edit/{{todo.id}}?_method=PUT" method="post" class="pt-3 needs-validation" novalidate>
+      <!--CSRF token-->
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      <!--Keep user id-->
       <input type="hidden" name="id" id="id" value="{{todo.id}}">
-
+      <!--Form-->
       <div class="form-row">
         <!--Name-->
         <div class="col tool-tip-container animateField">

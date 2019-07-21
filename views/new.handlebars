@@ -6,6 +6,9 @@
     {{> messages}}
 
     <form action="/todos/new" method="post" class="pt-3 needs-validation" novalidate>
+      <!--CSRF token-->
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      <!--Form-->
       <div class="form-row">
         <!--Name-->
         <div class="col tool-tip-container animateField">

@@ -25,7 +25,6 @@
       form.classList.add('was-validated')
       inputs.forEach(inputField => {
         const formInput = inputField.closest('.animateField')
-        console.log(formInput)
         if (inputField.checkValidity()) { return }
         formInput.classList.add('animated', 'shake')
       })

@@ -1,6 +1,6 @@
 <!--Todo list-->
-<section id="display-container" class="position-relative rounded shadow">
-  <div class="rounded" id="display-panel">
+<section id="display-container" class="rounded shadow">
+  <div class="rounded position" id="display-panel">
     <h3 class="text-center py-3"><u>Todo List</u></h3>
     <form action="/search" method="get" id="filter-panel" class="mb-1">
       <div class="form-row">
@@ -77,6 +77,8 @@
                 <div class="modal-footer delete-model-btns border-0 pt-1">
                   <button type="button" id="delete-model-back" data-dismiss="modal">Go back</button>
                   <form action="todos/delete/{{this.id}}?_method=DELETE" method="post" class="m-0">
+                    <!--CSRF token-->
+                    <input type="hidden" name="_csrf" value="{{../csrfToken}}">
                     <button type="submit" id="delete-model-delete">Delete</button>
                   </form>
                 </div>
