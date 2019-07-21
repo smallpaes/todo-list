@@ -12,13 +12,24 @@
   window.addEventListener('load', () => {
     // fetch the form
     const form = document.querySelector('.needs-validation')
+    // fetch all inputs
+    const inputs = document.querySelectorAll('form input')
+
     form.addEventListener('submit', event => {
       // if any invalid input exists
       if (form.checkValidity() === false) {
         event.preventDefault()
         event.stopPropagation()
       }
+      // add shake animation to invalid field
       form.classList.add('was-validated')
+      inputs.forEach(inputField => {
+        const formInput = inputField.closest('.animateField')
+        console.log(formInput)
+        if (inputField.checkValidity()) { return }
+        formInput.classList.add('animated', 'shake')
+      })
+
     }, false)
 
     // check matching password
