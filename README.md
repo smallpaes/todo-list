@@ -68,7 +68,7 @@ use todo_sequelize;
 
 ### Setup App
 
-**1. Create aa Facebook account**
+**1. Create a Facebook account**
 - [https://developers.facebook.com/](https://developers.facebook.com/)
 
 **2. Create a Facebook App and get the App ID & Secret**
