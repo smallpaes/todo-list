@@ -27,6 +27,10 @@
         const formInput = inputField.closest('.animateField')
         if (inputField.checkValidity()) { return }
         formInput.classList.add('animated', 'shake')
+        // remove animation when animation ends
+        formInput.addEventListener('animationend', event => {
+          formInput.classList.remove('animated', 'shake')
+        })
       })
 
     }, false)
