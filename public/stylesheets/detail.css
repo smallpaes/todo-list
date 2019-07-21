@@ -3,6 +3,14 @@ div.detail-panel-title  {
   background: rgba(176,176,176, .6);
 }
 
+div.detail-panel-title .badge {
+  font-weight: 100;
+}
+
+div.detail-panel-title .badge-danger {
+  opacity: .9;
+}
+
 div.detail-panel-detail  {
   min-height:100px;
   background: rgba(176,176,176, .6);

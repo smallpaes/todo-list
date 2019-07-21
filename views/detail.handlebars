@@ -5,6 +5,13 @@
     <div class="detail-panel-title mb-2 d-flex align-items-center px-3">
       <h5 class="m-0 pr-3"><i class="far fa-file-alt"></i></h5>
       <h4 class="m-0">{{todo.name}}</h4>
+      <h5 class="my-0 ml-auto">
+        {{#if todo.done}}
+        <span class="badge badge-success">Done</span>
+        {{else}}
+        <span class="badge badge-danger">Undone</span>
+        {{/if}}
+      </h5>
     </div>
     <div class="detail-panel-title mb-2 d-flex align-items-center px-3">
       <h5 class="m-0 pr-3"><i class="far fa-calendar-check"></i></h5>
@@ -27,7 +34,7 @@
                   class="fas fa-exclamation-triangle mr-2 text-danger"></i>Delete Confirmation</h5>
             </div>
             <div class="modal-body">
-              <h5 class="p-0 m-0">Your sure want to delete "{{todo.name}}"?</h5>
+              <h5 class="p-0 m-0">You sure want to delete "{{todo.name}}"?</h5>
             </div>
             <div class="modal-footer delete-model-btns border-0 pt-1">
               <button type="button" id="delete-model-back" data-dismiss="modal">Go back</button>
